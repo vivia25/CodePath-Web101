@@ -264,3 +264,49 @@ button {
   border-color: red;
   background:pink;
 }
+
+
+.reveal{
+  transform: translateY(5px);
+  opacity: 0;
+  transition: all 10s ease;
+}
+
+.active {
+  opacity: 1;
+  translate: 0px; /*moves item in y direction*/ 
+}
+
+.modal {
+  display:none;
+  position: fixed;  
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  background-color: rgba(0,0,0,0.4); 
+  flex-direction: column; 
+  align-items: center;
+  justify-content: center;
+}
+.modal-content{ /* ADDS BOX TO CENTER OF SCREEN */
+  background-color: lightsteelblue; /* CHANGE COLOR */
+  color: black; 
+  text-align: center;
+  font-size: 3rem;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+} 
+
+#thanks-modal-content { /*WIDTH OF TEXT CONTAINER*/
+  width: 40rem;
+}
+
+#modal-text-container{
+  display: flex; /* adds flexbox to center the text and buttons (stretch feature) */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
