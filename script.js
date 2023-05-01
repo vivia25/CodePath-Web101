@@ -4,74 +4,97 @@ const toggleDarkMode = () => {
   document.body.classList.toggle("dark-mode");
 }
 
-themeButton.addEventListener("click", toggleDarkMode);
 
-const signNowButton = document.querySelector("#sign-now-button");
-
-const addSignature = () => {
-    const nameInput = document.querySelector("#name");
-    const emailInput = document.querySelector("#email");
-    const hometownInput = document.getElementById("Htown");
-
-    const name = nameInput.value;
-    const emailEntered = emailInput.value;
-    const hometown = hometownInput.value;
-
-    const signature = document.createElement("p");
-    signature.innerHTML = "🖊️ " + name + " from " + hometown + " supports this."
-    
-    const signatures = document.querySelector(".signatures");
-    signatures.appendChild(signature);
-  
-    // Counter logic
-    let count = 3;
-    const counter = document.querySelector("#counter");
-    if (counter) {
-      count = parseInt(counter.innerText.split(" ")[1]); // extract current count
-      counter.remove(); // remove current counter
-    }
-    count++; // increase count
-    const newCounter = document.createElement("p");
-    newCounter.id = "counter";
-    newCounter.innerText = "🖊️ " + count + " have signed up to support this cause!";
-    signatures.appendChild(newCounter); // append new counter
+let animation = {
+  revealDistance: 150,
+  initialOpacity: 0,
+  trasitionDelay: 0,
+  transitionDuration: '2s',
+  transitionProperty: 'all',
+  transitionTiming: 'ease',
 }
 
-const validateForm = () => {
+let revealContainers = document.querySelectorAll('.reveal');
+
+const revealItem = () => {
+  for (let i = 0; i < revealContainers.length; i++) {
+    let windowHeight = window.innerHeight;
+    let revealContainerTop = revealContainers[i].getBoundingClientRect().top;
+    if (revealContainerTop < windowHeight - animation.revealDistance) {
+  revealContainers[i].classList.add('active'); 
+} else {
+  revealContainers[i].classList.remove('active');
+    }
+  }
+}
+
+window.addEventListener('scroll', revealItem);
+
+
+
+
+///petition///
+const signButton = document.getElementById('sign-button');
+
+const addSignature = (person) => {
+    
+   let newSignature = document.createElement('p');
+  newSignature.textContent = person.fName + " " + person.lName + " from " + person.town + " has signed!";
+
+  let signatureSection = document.getElementById('signature');
+
+  console.log(newSignature);
+
+  signatureSection.appendChild(newSignature);
+     
+}
+
+const validateForm = () => { // WILL BE CHANGED FOR FINAL STEP//
 
   let containsErrors = false;
 
-  var petitionInputs = document.getElementById("sign-petition").elements;
-
-  const email = document.getElementById('email');
+  let petitionInputs = document.getElementById("form-petition").elements;
   
+  let person = {
+      fName: petitionInputs[0].value,
+      lName: petitionInputs[1].value,
+      town: petitionInputs[2].value,
+  }
+    
   for (let i = 0; i < petitionInputs.length; i++) {
-    if (petitionInputs[i].value.length < 2) {
-      containsErrors = true;
+    
+    if (person.fName.length < 1) { 
       petitionInputs[i].classList.add('error');
+      containsErrors = true;
     }
     else {
-      petitionInputs[i].classList.remove('error');
-    }
-
-    if (!email.value.includes('.com')) {
-    containsErrors = true;
-    email.classList.add('error');
-    }
-    else {
-      email.classList.remove('error');
+      petitionInputs[i].classList.remove('error')
     }
   }
 
   if (containsErrors == false) {
-    addSignature();
-
-    for(let i = 0; i < petitionInputs.length; i++) {
-      petitionInputs[i].value = "";
+    addSignature(person);
+    toggleModal(person);
+    for (let i = 0; i < petitionInputs.length; i++) {
+      petitionInputs[i].value = '';
       containsErrors = false;
     }
   }
-
 }
 
-signNowButton.addEventListener('click', validateForm);
+
+
+const toggleModal = (person) => {
+  modal = document.getElementById("thanks-modal")
+  modalContent = document.getElementById("thanks-modal-content")
+  
+  modal.style.display = "flex";
+  modalContent.textContent = "Thank you " + person.fName + " " + person.lName + " for signing our petition! You are helping women everywhere! 😊" 
+
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 5000)
+  
+}
+
+signButton.addEventListener('click', validateForm);
