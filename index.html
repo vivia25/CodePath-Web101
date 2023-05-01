@@ -13,8 +13,18 @@
 </head>
 
   <body>
+    <!-- Modal -->
+  <div id="thanks-modal" class="modal">
 
-    <!-- Part 1: Navbar Starter Code -->
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div>
+      <p id="thanks-modal-content">place</p>
+      <!-- button here (stretch feature) -->
+    </div>
+    <img src="img/celebrate.gif" alt="Celebrate" style="width: 100%"/>
+  </div>
+</div>
 
 <div class="navbar">
   <ul>
@@ -53,13 +63,11 @@
       <div class="header-item">
         <h3>Reproductive Justice: Our Bodies, Our Lives, Our Power!</h3>
       </div>
-      <div id=header-img">
-       <img src=img/FFRJ.png width="200" height="200">
-      </div>
 
         <div class="header-button">
       <button type="button">Find Abortion Centers</button>
       <button type="button">Share Your Story</button>
+      <button type="button" id="reduceMotion">Reduce Motion</button>
     </div>
       
          
@@ -68,6 +76,7 @@
 
 
     <!--- About --->
+    <div class="about reveal">
     <h2>What is the reproductive justice?</h2>
 
 <iframe width="300" height="200" src="https://www.youtube.com/embed/I4mwQhKLBiM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -76,7 +85,8 @@
 
     </p>
 
-
+</div>
+    
     <!--- Data --->
 
     <h3 id="about">Data about my topic</h3>
@@ -92,7 +102,8 @@
   <li>Reference: <a href="https://amnesty.org/en/what-we-do/sexual-and-reproductive-rights/abortion-facts/#"><p>This is the link</p></a></li>
 </ul>
 
- 
+
+  <div class="impact reveal">
     <!--- Impact --->
     <h2>Impact!</h2>
 
@@ -115,13 +126,14 @@
     <p style="margin-left:2.3cm;">Low Income</p>
   </div>
 
+</div>
   <div class="petition" id="petition">
 
     <h2>Sign Our Petition 📢</h2>
     <div class="petition-container">
 
       <div class="petition-para">
-        We, the undersigned, urge you to recognize the fundamental importance of reproductive rights for all individuals.
+        We urge you to recognize the fundamental importance of reproductive rights for all individuals.
 
 Access to comprehensive reproductive healthcare, including contraception, safe and legal abortion, and prenatal care, is essential to ensure that individuals have the ability to make informed choices about their own bodies and futures. These services are crucial to the health and wellbeing of people and their families.
 
@@ -133,32 +145,33 @@ We urge you to take action now to promote and protect reproductive rights for al
       </div>
 
 
-      <div class="signatures">
-        <p>🖊️ Grace from New York supports this.</p>
-        <p>🖊️ Brad from Maine supports this.</p>
-        <p>🖊️ Stacy from Delaware supports this.</p>
-        <p id="counter">🖊️ 3 people/organizations have recently signed up to make an impact in their community!</p>
-      </div>
-      </div>
+     <div class='signature' id="signature">
+      <p>Akayla Thomas from Douglasville, GA has signed!</p>
+      <p>Karishma Pandit from Smyrna, GA has signed!</p>
+      <p>Tyson Hall from Seattle, WA has signed!</p>
+      <p></p>
+    </div>
+    
 
     </div>
 
   <!--- Sign Petition Form --->
-  <form id="sign-petition" title="sign-petition">
-    <label for="Name">Name</label>
-    <input type="text" id="name"> <br>
-    <label for="Email">Email</label>
-    <input type="text" id="email"> <br>
-     <label for="Hometown">Hometown:</label>
-  <input type="text" id="Htown" name="Htown"><br>
-  </form>
 
-   <!--- Sign Now Button --->
-  <button id="sign-now-button">Sign Now</button>
+     <div class = 'margin'>
+    <form id='form-petition' title='petition'>
+      <label for='fName'>First Name</label>
+      <input type='text' id='fName' placeholder="First Name">      
+      <label for='lName'>Last Name</label>
+      <input type='text' id='lName' placeholder="Last Name">
+      <label for='town'>Hometown</label>
+      <input type='text' id='town' placeholder="city, state">
 
+      </form>
+      <button id="sign-button">Sign</button>
+  </div>
     
 
-</div>
+
 
     <!--- News ---> <!--this will help with a stretch goal, if you do not want to incorporate this, then leave it alone :)-->
    <h2>Recent News</h2>
@@ -198,7 +211,7 @@ We urge you to take action now to promote and protect reproductive rights for al
   </a>
 </div>
 
-  
+
 
 
   <script src="script.js"></script>
